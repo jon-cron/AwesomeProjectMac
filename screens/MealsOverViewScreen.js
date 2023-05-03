@@ -7,25 +7,27 @@ import {
   Pressable,
   FlatList,
 } from "react-native";
-import { MEALS } from "../data/dummbyData.js";
+import { MEALS, CATEGORIES } from "../data/dummbyData.js";
 import MealItem from "../components/MealItem.js";
 // import { useRoute } from "@react-navigation/native";
 // NOTE you could also use the useRoute hook to accomplish the same thing as imported above
 // NOTE any registered screen can access the route or navigation props
-const MealsOverViewScreen = ({ route }) => {
+const MealsOverViewScreen = ({ route, navigation }) => {
   const params = route.params.categoryId;
   const filteredMEals = MEALS.filter((meal) => {
     return meal.categoryIds.indexOf(params) >= 0;
   });
+  const categoryTitle = CATEGORIES.find((category) => category.id === params).title
+  navigation.setOptions({title: categoryTitle})
   const renderMealItem = (itemData) => {
     const mealItemProps = {
       title: itemData.item.title,
       imgUrl: itemData.item.imageUrl,
       complexity: itemData.item.complexity,
       duration: itemData.item.duration,
-      affordability: itemData.item.affordability,
+      affordability: itemData.item.affordability
     };
-    return <MealItem {...mealItemProps} />;
+    return <MealItem {...mealItemProps} />;å
   };
   return (
     <View style={styles.container}>
