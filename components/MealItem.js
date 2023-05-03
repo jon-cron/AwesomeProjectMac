@@ -1,3 +1,4 @@
+import { useNavigation } from "@react-navigation/native";
 import React from "react";
 import {
   Text,
@@ -10,6 +11,7 @@ import {
 } from "react-native";
 
 const MealItem = ({ title, imgUrl, complexity, duration, affordability }) => {
+  const navigation = useNavigation()
   return (
     <View style={styles.mealItem}>
       <Pressable

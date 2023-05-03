@@ -7,6 +7,7 @@ import CategoriesScreen from "./screens/CategoriesScreen.js";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import MealsOverViewScreen from "./screens/MealsOverViewScreen.js";
+import MealDetailsScreen from "./screens/MealDetailsScreen.js";
 
 const Stack = createNativeStackNavigator();
 
@@ -14,7 +15,7 @@ export default function App() {
   return (
     <>
       {/* NOTE changing the statusbar to light changes the icons like wifi and battery to white instead of dark */}
-      <StatusBar style="dark" />
+      <StatusBar style="light" />
       <NavigationContainer>
         {/* NOTE initially the first screen would be the first Stack.Screen but that can be altered using the initialRouteName */}
         <Stack.Navigator
@@ -34,13 +35,8 @@ export default function App() {
               title: "All Categories",
             }}
           />
-          <Stack.Screen name="MealsOverview" component={MealsOverViewScreen} 
-          // NOTE this is one approach to adding options
-          //   options={({route, navigation}) => {
-          //   const catId = route.params.categoryId
-          //   return {title: catId}
-          // }}
-          />
+          <Stack.Screen name="MealsOverview" component={MealsOverViewScreen}/>
+          <Stack.Screen name="MealDetails" component={MealDetailsScreen}/>
         </Stack.Navigator>
       </NavigationContainer>
     </>
