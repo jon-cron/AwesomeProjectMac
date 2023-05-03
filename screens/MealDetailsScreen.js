@@ -7,14 +7,16 @@ import MealDetails from '../components/MealDetails'
 const MealDetailsScreen = ({route, navigation}) => {
     const id = route.params.mealId
     const meal = MEALS.find((meal) => meal.id === id)
-
+const handlePress = () => {
+    console.log('pressing')
+}
 useLayoutEffect(() => {
     navigation.setOptions({
         headerRight: () => {
-            return <Button title='button'/>
+            return <Button title='button' onPress={handlePress}/>
         }
     })
-},[])
+},[navigation, handlePress])
 
     return (
         <ScrollView showsVerticalScrollIndicator={false}>
