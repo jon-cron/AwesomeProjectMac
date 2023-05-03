@@ -9,6 +9,7 @@ import {
   Image,
   Platform,
 } from "react-native";
+import MealDetails from "./MealDetails";
 
 const MealItem = ({ id, title, imgUrl, complexity, duration, affordability }) => {
   const navigation = useNavigation()
@@ -33,11 +34,7 @@ const MealItem = ({ id, title, imgUrl, complexity, duration, affordability }) =>
             <Image style={styles.image} source={{ uri: imgUrl }} />
             <Text style={styles.title}>{title}</Text>
           </View>
-          <View style={styles.details}>
-            <Text>{duration}(minutes) </Text>
-            <Text>{complexity.toUpperCase()} </Text>
-            <Text>{affordability.toUpperCase()} </Text>
-          </View>
+          <MealDetails duration={duration} complexity={complexity} affordability={affordability}/>
         </View>
       </Pressable>
     </View>
@@ -78,12 +75,7 @@ const styles = StyleSheet.create({
     fontSize: 18,
     margin: 8,
   },
-  details: {
-    flexDirection: "row",
-    alignItems: "center",
-    padding: 8,
-    justifyContent: "space-evenly",
-  },
+
 });
 
 export default MealItem;

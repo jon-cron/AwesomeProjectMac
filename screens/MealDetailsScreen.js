@@ -6,10 +6,9 @@ import { MEALS } from '../data/dummbyData'
 const MealDetailsScreen = ({route, navigation}) => {
     const id = route.params.mealId
     const meal = MEALS.find((meal) => meal.id === id)
-    console.log(meal)
     return (
-        <View>
-            <Image/>
+        <View style={styles.container}> 
+            <Image style={styles.image} source={{uri: meal.imageUrl}}/>
             <Text>I am a meals details screen {id}</Text>
             <View></View>
             <Text>Ingredients</Text>
@@ -17,10 +16,14 @@ const MealDetailsScreen = ({route, navigation}) => {
         </View>
     )
 
-    const styles = StyleSheet.create({
-        constainer: {
-            flex: 1
-        }
-    })
 }
+const styles = StyleSheet.create({
+    container: {
+        flex: 1
+    },
+    image: {
+        height:200,
+        width: 300
+    }
+})
 export default MealDetailsScreen
