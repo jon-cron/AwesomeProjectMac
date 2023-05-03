@@ -17,6 +17,7 @@ const MealsOverViewScreen = ({ route, navigation }) => {
   const filteredMEals = MEALS.filter((meal) => {
     return meal.categoryIds.indexOf(params) >= 0;
   });
+  // NOTE useLayoutEffect works similar to useEffect but will occur during page load not after. This can help with UI and timing.
   useLayoutEffect(() => {
     const categoryTitle = CATEGORIES.find((category) => category.id === params).title
     navigation.setOptions({title: categoryTitle})
