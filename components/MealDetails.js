@@ -1,15 +1,15 @@
 import React from 'react';
 import {View, Text, Image, Pressable, StyleSheet} from 'react-native';
 
-
-const MealDetails = ({duration, affordability, complexity}) => {
+// NOTE we can pass down style to our components through props like this
+const MealDetails = ({duration, affordability, complexity, style, textStyle}) => {
 
 
 return (
-<View style={styles.details}>
-            <Text>{duration}(minutes) </Text>
-            <Text>{complexity.toUpperCase()} </Text>
-            <Text>{affordability.toUpperCase()} </Text>
+<View style={[styles.details, style]}>
+            <Text style={textStyle}>{duration}(minutes) </Text>
+            <Text style={textStyle}>{complexity.toUpperCase()} </Text>
+            <Text style={textStyle}>{affordability.toUpperCase()} </Text>
 </View>
 )
 }

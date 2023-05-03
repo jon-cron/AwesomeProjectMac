@@ -1,6 +1,7 @@
 import React from 'react'
 import { View, StyleSheet, Text,Pressable, Image, } from 'react-native'
 import { MEALS } from '../data/dummbyData'
+import MealDetails from '../components/MealDetails'
 
 
 const MealDetailsScreen = ({route, navigation}) => {
@@ -9,10 +10,16 @@ const MealDetailsScreen = ({route, navigation}) => {
     return (
         <View style={styles.container}> 
             <Image style={styles.image} source={{uri: meal.imageUrl}}/>
-            <Text>I am a meals details screen {id}</Text>
-            <View></View>
+            <Text style={styles.title}>{meal.title}</Text>
+            <MealDetails textStyle={styles.textStyle} duration={meal.duration} affordability={meal.affordability} complexity={meal.complexity}/>
             <Text>Ingredients</Text>
+            {meal.ingredients.map((i) => {
+                return <Text style={styles.textStyle} key={i}>{i}</Text>
+            })}
             <Text>Steps</Text>
+            {meal.steps.map((s) => {
+                return <Text style={styles.textStyle} key={s}>{s}</Text>
+            })}
         </View>
     )
 
@@ -22,8 +29,17 @@ const styles = StyleSheet.create({
         flex: 1
     },
     image: {
-        height:200,
-        width: 300
+        height:350,
+        width: '100%'
+    },
+    title: {
+        fontSize: 24,
+        fontWeight: 'bold',
+        textAlign: 'center',
+        color: 'white'
+    },
+    textStyle: {
+        color: 'white'
     }
 })
 export default MealDetailsScreen
