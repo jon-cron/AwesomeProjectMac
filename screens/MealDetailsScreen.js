@@ -12,11 +12,17 @@ const MealDetailsScreen = ({route, navigation}) => {
             <Image style={styles.image} source={{uri: meal.imageUrl}}/>
             <Text style={styles.title}>{meal.title}</Text>
             <MealDetails textStyle={styles.textStyle} duration={meal.duration} affordability={meal.affordability} complexity={meal.complexity}/>
-            <Text>Ingredients</Text>
+            <View style={styles.subtitleContainer}>
+
+            <Text style={styles.subtitle}>Ingredients</Text>
+            </View>
             {meal.ingredients.map((i) => {
                 return <Text style={styles.textStyle} key={i}>{i}</Text>
             })}
-            <Text>Steps</Text>
+            <View style={styles.subtitleContainer}>
+
+            <Text style={styles.subtitle}>Steps</Text>
+            </View>
             {meal.steps.map((s) => {
                 return <Text style={styles.textStyle} key={s}>{s}</Text>
             })}
@@ -40,6 +46,22 @@ const styles = StyleSheet.create({
     },
     textStyle: {
         color: 'white'
+    },
+    subtitle: {
+        color: '#e2b497',
+        fontSize: 18,
+        fontWeight: 'bold',
+        textAlign: 'center',
+        // NOTE text cannot receive borders in react
+        // borderBottomColor: 'white',
+        // borderBottomWidth: 2
+    },
+    subtitleContainer: {
+        padding: 6,
+        marginHorizontal:24,
+        marginVertical: 4,
+        borderBottomColor: '#e2b497',
+        borderBottomWidth: 2
     }
 })
 export default MealDetailsScreen
