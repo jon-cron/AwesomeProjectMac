@@ -2,7 +2,7 @@
 // NOTE then run 'expo install react-native-screens react-native-safe-area-context' IF YOU ARE USING EXPO
 // NOTE then run 'expo install @react-navigation/native-stack'
 import { StatusBar } from "expo-status-bar";
-import { StyleSheet } from "react-native";
+import { Button, StyleSheet } from "react-native";
 import CategoriesScreen from "./screens/CategoriesScreen.js";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
@@ -36,7 +36,14 @@ export default function App() {
             }}
           />
           <Stack.Screen name="MealsOverview" component={MealsOverViewScreen}/>
-          <Stack.Screen name="MealDetails" component={MealDetailsScreen}/>
+          <Stack.Screen name="MealDetails" component={MealDetailsScreen} 
+        //  NOTE this is one way of placing an item in the header but you cannot get interactivity with the screen that you are on since the functionality is in the app.js file
+         // options={{
+          //   headerRight: () => {
+          //     return <Button title='tap me'/>
+          //   }
+          // }}
+          />
         </Stack.Navigator>
       </NavigationContainer>
     </>

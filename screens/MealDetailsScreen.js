@@ -1,5 +1,5 @@
-import React from 'react'
-import { View, StyleSheet, Text,Pressable, Image, ScrollView, } from 'react-native'
+import React, {useLayoutEffect} from 'react'
+import { View, StyleSheet, Text,Pressable, Image, ScrollView, Button, } from 'react-native'
 import { MEALS } from '../data/dummbyData'
 import MealDetails from '../components/MealDetails'
 
@@ -7,6 +7,15 @@ import MealDetails from '../components/MealDetails'
 const MealDetailsScreen = ({route, navigation}) => {
     const id = route.params.mealId
     const meal = MEALS.find((meal) => meal.id === id)
+
+useLayoutEffect(() => {
+    navigation.setOptions({
+        headerRight: () => {
+            return <Button title='button'/>
+        }
+    })
+},[])
+
     return (
         <ScrollView showsVerticalScrollIndicator={false}>
 
