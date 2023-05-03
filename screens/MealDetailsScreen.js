@@ -1,5 +1,5 @@
 import React from 'react'
-import { View, StyleSheet, Text,Pressable, Image, } from 'react-native'
+import { View, StyleSheet, Text,Pressable, Image, ScrollView, } from 'react-native'
 import { MEALS } from '../data/dummbyData'
 import MealDetails from '../components/MealDetails'
 
@@ -8,6 +8,8 @@ const MealDetailsScreen = ({route, navigation}) => {
     const id = route.params.mealId
     const meal = MEALS.find((meal) => meal.id === id)
     return (
+        <ScrollView showsVerticalScrollIndicator={false}>
+
         <View style={styles.container}> 
             <Image style={styles.image} source={{uri: meal.imageUrl}}/>
             <Text style={styles.title}>{meal.title}</Text>
@@ -27,6 +29,7 @@ const MealDetailsScreen = ({route, navigation}) => {
                 return <Text style={styles.textStyle} key={s}>{s}</Text>
             })}
         </View>
+            </ScrollView>
     )
 
 }
