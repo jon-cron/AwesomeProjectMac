@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useLayoutEffect} from "react";
 import {
   Text,
   View,
@@ -17,9 +17,11 @@ const MealsOverViewScreen = ({ route, navigation }) => {
   const filteredMEals = MEALS.filter((meal) => {
     return meal.categoryIds.indexOf(params) >= 0;
   });
-  const categoryTitle = CATEGORIES.find((category) => category.id === params).title
-  navigation.setOptions({title: categoryTitle})
-  const renderMealItem = (itemData) => {
+  useLayoutEffect(() => {
+    const categoryTitle = CATEGORIES.find((category) => category.id === params).title
+    navigation.setOptions({title: categoryTitle})
+  },[ params, navigation])
+    const renderMealItem = (itemData) => {
     const mealItemProps = {
       title: itemData.item.title,
       imgUrl: itemData.item.imageUrl,
