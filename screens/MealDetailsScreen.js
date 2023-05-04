@@ -13,7 +13,7 @@ const handlePress = () => {
 useLayoutEffect(() => {
     navigation.setOptions({
         headerRight: () => {
-            return <Button title='button' onPress={handlePress}/>
+            return <Button title='Fav' onPress={handlePress}/>
         }
     })
 },[navigation, handlePress])
