@@ -12,13 +12,27 @@ import MealsOverViewScreen from "./screens/MealsOverViewScreen.js";
 import MealDetailsScreen from "./screens/MealDetailsScreen.js";
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import FavoritesScreen from "./screens/FavoritesScreen.js";
-
+import {Ionicons} from '@expo/vector-icons'
 const Stack = createNativeStackNavigator();
 const Drawer = createDrawerNavigator();
 const DrawerNavigator = () => {
-  return (<Drawer.Navigator>
-    <Drawer.Screen name="MealCategories" component={CategoriesScreen}/>
-    <Drawer.Screen name="Favorites" component={FavoritesScreen}/>
+  return (<Drawer.Navigator screenOptions={{
+    headerStyle: { backgroundColor: "#351401" },
+    headerTintColor: "#ffffff",
+    // NOTE to set the background color of the drawer you set the sceneContainerStyle as shown below
+    sceneContainerStyle: { backgroundColor: "#3f2f25" },
+    drawerContentStyle: {backgroundColor: "#351401"},
+    drawerInactiveTintColor: 'white',
+    drawerActiveTintColor: "#351401",
+    drawerActiveBackgroundColor: '#e4baa1'
+  }}>
+    <Drawer.Screen name="MealCategories" component={CategoriesScreen} options={{
+      title: 'All Categories',
+      drawerIcon: ({color, size}) => <Ionicons name="list" color={color} size={size} />
+    }}/>
+    <Drawer.Screen name="Favorites" component={FavoritesScreen} options={{
+      drawerIcon: ({color, size}) => <Ionicons name="heart" color={color} size={size}/>
+    }}/>
   </Drawer.Navigator>)
 }
 
@@ -43,7 +57,7 @@ export default function App() {
             component={DrawerNavigator}
             // NOTE if you want to customize screens then place the styling within that screen
             options={{
-              // title: "All Categories",
+              headerShown: false
             }}
           />
           <Stack.Screen name="MealsOverview" component={MealsOverViewScreen}/>
