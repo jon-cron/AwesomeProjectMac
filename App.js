@@ -1,6 +1,8 @@
 // NOTE first run 'npm install @react-navigation/native'
-// NOTE then run 'expo install react-native-screens react-native-safe-area-context' IF YOU ARE USING EXPO
-// NOTE then run 'expo install @react-navigation/native-stack'
+// NOTE then run 'npx expo install react-native-screens react-native-safe-area-context' IF YOU ARE USING EXPO
+// NOTE then run 'npx expo install @react-navigation/native-stack'
+// NOTE to use bottom tab or draw I had to run 'npx expo install react-native-gesture-handler react-native-reanimated'
+// NOTE I then ran into an issue with version two so then run 'npm install react-native-reanimated@1 --save --save-exact'
 import { StatusBar } from "expo-status-bar";
 import { Button, StyleSheet } from "react-native";
 import CategoriesScreen from "./screens/CategoriesScreen.js";
@@ -8,8 +10,15 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import MealsOverViewScreen from "./screens/MealsOverViewScreen.js";
 import MealDetailsScreen from "./screens/MealDetailsScreen.js";
+import { createDrawerNavigator } from "@react-navigation/drawer";
 
 const Stack = createNativeStackNavigator();
+const Drawer = createDrawerNavigator();
+const DrawerNavigator = () => {
+  return (<Drawer.Navigator>
+
+  </Drawer.Navigator>)
+}
 
 export default function App() {
   return (
