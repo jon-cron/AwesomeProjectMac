@@ -11,12 +11,14 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import MealsOverViewScreen from "./screens/MealsOverViewScreen.js";
 import MealDetailsScreen from "./screens/MealDetailsScreen.js";
 import { createDrawerNavigator } from "@react-navigation/drawer";
+import FavoritesScreen from "./screens/FavoritesScreen.js";
 
 const Stack = createNativeStackNavigator();
 const Drawer = createDrawerNavigator();
 const DrawerNavigator = () => {
   return (<Drawer.Navigator>
-
+    <Drawer.Screen name="MealCategories" component={CategoriesScreen}/>
+    <Drawer.Screen name="Favorites" component={FavoritesScreen}/>
   </Drawer.Navigator>)
 }
 
@@ -38,10 +40,10 @@ export default function App() {
         >
           <Stack.Screen
             name="Categories"
-            component={CategoriesScreen}
+            component={DrawerNavigator}
             // NOTE if you want to customize screens then place the styling within that screen
             options={{
-              title: "All Categories",
+              // title: "All Categories",
             }}
           />
           <Stack.Screen name="MealsOverview" component={MealsOverViewScreen}/>
