@@ -1,19 +1,27 @@
-import React, {useLayoutEffect} from 'react'
+import React, {useContext, useLayoutEffect} from 'react'
 import { View, StyleSheet, Text,Pressable, Image, ScrollView, Button, } from 'react-native'
 import { MEALS } from '../data/dummbyData'
 import MealDetails from '../components/MealDetails'
-
+import { FavoriteContext } from '../store/context/favorites-context'
+import {Ionicons} from '@expo/vector-icons'
 
 const MealDetailsScreen = ({route, navigation}) => {
+    const favContext = useContext(FavoriteContext)
     const id = route.params.mealId
     const meal = MEALS.find((meal) => meal.id === id)
+    const mealIsFav = favContext.ids.includes(meal.id)
+
 const handlePress = () => {
-    console.log('pressing')
+    if(mealIsFav){
+        favContext.removeFavorite(id)
+    } else {
+        favContext.addFavorite(id)
+    }
 }
 useLayoutEffect(() => {
     navigation.setOptions({
-        headerRight: () => {
-            return <Button title='Fav' onPress={handlePress}/>
+        headerRight: ({size, color}) => {
+            return <Ionicons name={mealIsFav ? 'heart' : 'heart-outline'} size={30} color={'red'} onPress={handlePress}/>
         }
     })
 },[navigation, handlePress])
