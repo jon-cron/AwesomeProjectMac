@@ -9,6 +9,11 @@ const FavoritesScreen = () => {
 const favContext = useContext(FavoriteContext)
 // NOTE this is an excellent way to check to see if an id is in two different arrays
 const favoriteMeals = MEALS.filter(meal => favContext.ids.includes(meal.id))
+if(favoriteMeals.length === 0) {
+    return (
+        <View><Text>There are no favorites</Text></View>
+    )
+}
 return (
 <MealsList items={favoriteMeals}/>
 )
