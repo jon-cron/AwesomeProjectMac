@@ -20,5 +20,5 @@ return (
 }
 
 const styles = StyleSheet.create({})
-
+// NOTE will finish this app on wednesday
 export default FavoritesScreen
