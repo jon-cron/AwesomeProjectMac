@@ -20,5 +20,5 @@ return (
 }
 
 const styles = StyleSheet.create({})
-// NOTE will finish this app on wednesday
+// NOTE will finish this app on somedat
 export default FavoritesScreen
