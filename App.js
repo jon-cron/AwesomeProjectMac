@@ -13,7 +13,9 @@ import MealDetailsScreen from "./screens/MealDetailsScreen.js";
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import FavoritesScreen from "./screens/FavoritesScreen.js";
 import {Ionicons} from '@expo/vector-icons'
-import FavoritesContextProvider from "./store/context/favorites-context.js";
+// import FavoritesContextProvider from "./store/context/favorites-context.js";
+import { store } from "./store/redux/store.js";
+import { Provider } from "react-redux";
 const Stack = createNativeStackNavigator();
 const Drawer = createDrawerNavigator();
 const DrawerNavigator = () => {
@@ -42,7 +44,9 @@ export default function App() {
     <>
       {/* NOTE changing the statusbar to light changes the icons like wifi and battery to white instead of dark */}
       <StatusBar style="light" />
-      <FavoritesContextProvider>
+      {/* <FavoritesContextProvider> */}
+      {/* NOTE until you add the store the app will be broken */}
+      <Provider store={store}>
 
       <NavigationContainer>
         {/* NOTE initially the first screen would be the first Stack.Screen but that can be altered using the initialRouteName */}
@@ -74,7 +78,8 @@ export default function App() {
             />
         </Stack.Navigator>
       </NavigationContainer>
-            </FavoritesContextProvider>
+            </Provider>
+            {/* </FavoritesContextProvider> */}
     </>
   );
 }
